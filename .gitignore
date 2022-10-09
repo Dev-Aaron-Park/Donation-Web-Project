@@ -24,9 +24,9 @@ hs_err_pid*
 
 # Custom
 servlet-context.xml
-customImg
-fonts
-images
+/customImg
+/fonts
+/images
 *.png
 *.jpg
 *.gif
