@@ -7,4 +7,13 @@
 		insert into donation_member
 		values(#{member_id}, #{member_pw}, #{member_email})
 	</insert>
+	
+	<select id="getMemberByID"
+		parameterType="org.aaronpark.donation.member.Member"
+		resultType="org.aaronpark.donation.member.Member">
+		select * from donation_member
+		where member_id = #{member_id}
+	</select>
+	
+	
 </mapper>

@@ -15,12 +15,30 @@ public class MemberController {
 	
 	@RequestMapping(value = "/member.go", method = RequestMethod.GET)
 	public String memberGo(HttpServletRequest req) {
-		return "member/login";
+		req.setAttribute("contentsPage", "member/login.jsp");
+		return "index";
 	}
 	
 	@RequestMapping(value = "/signup.do", method = RequestMethod.POST)
 	public String joinDo(Member m, HttpServletRequest req) {
-		mDAO.create(m, req);
+		mDAO.signup(m, req);
+		req.setAttribute("contentsPage", "member/login.jsp");
+		return "index";
+	}
+	
+	@RequestMapping(value = "/login.do", method = RequestMethod.POST)
+	public String loginDo(Member m, HttpServletRequest req) {
+		req.setAttribute("contentsPage", "home.jsp");
+		mDAO.login(m, req);
+		mDAO.isLogined(req);
+		return "index";
+	}
+	
+	@RequestMapping(value = "/logout.do", method = RequestMethod.GET)
+	public String logoutDo(Member m, HttpServletRequest req) {
+		req.setAttribute("contentsPage", "home.jsp");
+		mDAO.logout(req);
+		mDAO.isLogined(req);
 		return "index";
 	}
 }

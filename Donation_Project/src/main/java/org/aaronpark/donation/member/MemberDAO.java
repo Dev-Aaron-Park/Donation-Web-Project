@@ -12,7 +12,42 @@ public class MemberDAO {
 	@Autowired
 	private SqlSession ss;
 	
-	public void create(Member m, HttpServletRequest req) {
+	public boolean isLogined(HttpServletRequest req) {
+		Member m = (Member) req.getSession().getAttribute("loginMember");
+		if (m != null) {
+			req.setAttribute("isLogined", true);
+			return true;
+		}
+		req.setAttribute("isLogined", false);
+		return false;
+	}
+	
+	public void login(Member inputMember, HttpServletRequest req) {
+		try {
+			Member dbMember = ss.getMapper(MemberMapper.class).getMemberByID(inputMember);
+			if (dbMember != null) {
+				if (inputMember.getMember_pw().equals(dbMember.getMember_pw())) {
+					req.getSession().setAttribute("loginMember", dbMember);
+					req.setAttribute("result", "Login Success");
+				} else {
+					req.setAttribute("result", "Login Failed(Password Error)");
+				}
+				
+			} else {
+				req.setAttribute("result", "Login Failed(None Member)");
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			req.setAttribute("result", "Login Failed(DB Server Error)");
+		}
+	}
+	
+	public void logout(HttpServletRequest req) {
+		req.getSession().setAttribute("loginMember", null);
+	}
+	
+	public void signup(Member m, HttpServletRequest req) {
 		try {
 			if (ss.getMapper(MemberMapper.class).signup(m) == 1) {
 				System.out.println("Member Create Success");
@@ -24,5 +59,6 @@ public class MemberDAO {
 			System.out.println("Member Create Failed");
 		}
 	}
+	
 	
 }
