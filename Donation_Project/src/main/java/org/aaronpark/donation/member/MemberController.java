@@ -13,19 +13,6 @@ public class MemberController {
 	@Autowired
 	private MemberDAO mDAO;
 	
-	@RequestMapping(value = "/member.go", method = RequestMethod.GET)
-	public String memberGo(HttpServletRequest req) {
-		req.setAttribute("contentsPage", "member/login.jsp");
-		return "index";
-	}
-	
-	@RequestMapping(value = "/signup.do", method = RequestMethod.POST)
-	public String joinDo(Member m, HttpServletRequest req) {
-		mDAO.signup(m, req);
-		req.setAttribute("contentsPage", "member/login.jsp");
-		return "index";
-	}
-	
 	@RequestMapping(value = "/login.do", method = RequestMethod.POST)
 	public String loginDo(Member m, HttpServletRequest req) {
 		req.setAttribute("contentsPage", "home.jsp");
@@ -41,4 +28,32 @@ public class MemberController {
 		mDAO.isLogined(req);
 		return "index";
 	}
+	
+	@RequestMapping(value = "/member.go", method = RequestMethod.GET)
+	public String memberGo(HttpServletRequest req) {
+		req.setAttribute("contentsPage", "member/login.jsp");
+		return "index";
+	}
+	
+	@RequestMapping(value = "/mypage.go", method = RequestMethod.GET)
+	public String mypageGo(HttpServletRequest req) {
+		req.setAttribute("contentsPage", "member/mypage.jsp");
+		mDAO.isLogined(req);
+		return "index";
+	}
+	
+	@RequestMapping(value = "/mypage.myaccount.go", method = RequestMethod.GET)
+	public String myAccountGo(HttpServletRequest req) {
+		req.setAttribute("contentsPage", "member/mypage.jsp");
+		mDAO.isLogined(req);
+		return "index";
+	}
+	
+	@RequestMapping(value = "/signup.do", method = RequestMethod.POST)
+	public String joinDo(Member m, HttpServletRequest req) {
+		mDAO.signup(m, req);
+		req.setAttribute("contentsPage", "member/login.jsp");
+		return "index";
+	}
+	
 }

@@ -24,7 +24,7 @@
 	                <form action="login.do" name="loginForm" method="POST" onsubmit="">
 	                    <div class="input-field">
 	                        <input name="member_id" type="text" placeholder="Enter your ID" required>
-	                        <i class="uil uil-envelope icon"></i>
+	                        <i class="uil uil-user"></i>
 	                    </div>
 	                    <div class="input-field">
 	                        <input name="member_pw" type="password" class="password" placeholder="Enter your password" required>
@@ -33,8 +33,7 @@
 	                    </div>
 	
 	                    <div class="checkbox-text">
-	                         
-	                        <a href="#" class="text">Forgot password?</a>
+	                        <a href="#" class="text alertStart">Forgot password?</a>
 	                    </div>
 	
 	                    <div class="input-field button">
@@ -52,10 +51,9 @@
 	            <!-- Registration Form -->
 	            <div class="form signup">
 	                <span class="title">Registration</span>
-	
-	                <form action="signup.do" name="signupForm" method="POST" onsubmit="">
+	                <form action="signup.do" name="signupForm" method="POST" onsubmit="return checkSignup();">
 	                    <div class="input-field">
-	                        <input name="member_id" type="text" placeholder="Enter your name" required>
+	                        <input name="member_id" type="text" placeholder="Enter your ID" required>
 	                        <i class="uil uil-user"></i>
 	                    </div>
 	                    <div class="input-field">
@@ -95,6 +93,6 @@
     </div>
 
     <script src="resources/js/member/login.js"></script>
-	
+	<script src="resources/js/custom.js"></script>
 </body>
 </html>

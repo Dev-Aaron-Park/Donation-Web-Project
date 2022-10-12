@@ -31,7 +31,7 @@
 					<li class="has-children">
 						<a href="#">Introduce</a>
 						<ul class="dropdown">
-							<li><a href="elements.html">About Us</a></li>
+							<li><a href="#">About Us</a></li>
 							<li class="has-children">
 								<a href="#">How to Donate ?</a>
 								<ul class="dropdown">
@@ -42,10 +42,10 @@
 							<li><a href="#">Created By</a></li>
 						</ul>
 					</li>
-					<li><a href="services.html">Donation</a></li>
+					<li><a href="board.go">Donation</a></li>
 					<c:choose>
 						<c:when test="${isLogined == true }">
-							<li><a href="#">My Page</a></li>
+							<li><a href="mypage.go">My Page</a></li>
 							<li><a href="logout.do">Logout</a></li>
 						</c:when>
 						<c:otherwise>
@@ -57,7 +57,6 @@
 				<a href="#" class="burger ml-auto float-right site-menu-toggle js-menu-toggle d-inline-block d-lg-none light" data-toggle="collapse" data-target="#main-navbar">
 					<span></span>
 				</a>
-
 			</div>
 		</div>
 	</nav>
