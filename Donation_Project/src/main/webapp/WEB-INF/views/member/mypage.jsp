@@ -43,7 +43,7 @@
 	                </a>
 	                <div class="d-flex align-items-center ms-4 mb-4">
 	                    <div class="position-relative">
-	                        <img class="rounded-circle" src="resources/images/user.jpg" alt="" style="width: 40px; height: 40px;">
+	                        <img class="rounded-circle" src="resources/profilePhoto/${sessionScope.loginMember.member_photo }" alt="" style="width: 40px; height: 40px;">
 	                        <div class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1"></div>
 	                    </div>
 	                    <div class="ms-3">
@@ -83,48 +83,50 @@
 	        <!-- Content Start -->
 	        <div class="content">
 	        	<div class="container-fluid pt-4 px-4">
-	        		<div class="row g-4">
-			           	<div class="col-sm-12 col-xl-6">
-		                    <div class="bg-light rounded h-100 p-4">
-		                        <h6 class="mb-4">User Information</h6>
-		                        <div class="form-floating mb-3">
-		                            <input type="text" class="form-control" id="floatingInput" readonly="readonly" value="${sessionScope.loginMember.member_id }">
-		                            <label for="floatingInput">ID</label>
-		                        </div>
-		                        <div class="form-floating mb-3">
-		                            <input type="text" class="form-control" id="floatingInput"
-		                                placeholder="name@example.com" readonly="readonly" value="${sessionScope.loginMember.member_email }">
-		                            <label for="floatingInput">Email</label>
-		                        </div>
-		                        <div class="form-floating mb-3">
-		                            <input type="password" class="form-control" id="floatingPassword"
-		                                placeholder="Password">
-		                            <label for="floatingPassword">Password</label>
-		                        </div>
-		                    </div>
-		                </div>
-			            <div class="col-sm-12 col-xl-6">
-		                    <div class="bg-light rounded h-100 p-4">
-		                       <h6 class="mb-4">Profile Photo</h6>
-		                       <div class="position-relative" align="center">
-	                    		   <img class="rounded-circle" src="resources/images/testimonial-1.jpg" style="width: 200px; height: 200px;">
-	                 		   </div>
-		                       <div class="mb-3" style="margin-top: 60px;">
-	                 			   <h6 class="mb-4">Photo Edit</h6>
-		                           <input class="form-control" type="file" id="formFile">
-		                       </div>
-		                    </div>
-		                </div>
-		                <!-- Edit Button -->
-						<div style="width: 100%" align="center">
-							<button type="submit" class="btn btn-primary" style="width: 40%">Edit</button>
-					    </div>
-	        		</div>
+                    <form action="mypage.edit.do" name="signupForm" method="POST" onsubmit="return checkSignup();" enctype="Multipart/form-data">
+		        		<div class="row g-4">
+				           	<div class="col-sm-12 col-xl-6">
+			                    <div class="bg-light rounded h-100 p-4">
+			                        <h6 class="mb-4">User Information</h6>
+			                        <div class="form-floating mb-3">
+			                            <input name="member_id" type="text" class="form-control" id="floatingInput" readonly="readonly" value="${sessionScope.loginMember.member_id }">
+			                            <label for="floatingInput">ID</label>
+			                        </div>
+			                        <div class="form-floating mb-3">
+			                            <input name="member_email" type="text" class="form-control" id="floatingInput"
+			                                placeholder="name@example.com" value="${sessionScope.loginMember.member_email }">
+			                            <label for="floatingInput">Email</label>
+			                        </div>
+			                        <div class="form-floating mb-3">
+			                            <input name="member_pw" type="password" class="form-control" id="floatingPassword"
+			                                placeholder="Password">
+			                            <label for="floatingPassword">Password</label>
+			                        </div>
+			                        <div class="mb-3" style="margin-top: 30px;">
+		                 			   <h6 class="mb-4">Photo Edit</h6>
+			                           <input name="member_photo" class="form-control" type="file" id="formFile">
+			                       </div>
+			                    </div>
+			                </div>
+				            <div class="col-sm-12 col-xl-6">
+			                    <div class="bg-light rounded h-100 p-4">
+			                       <h6 class="mb-4">Profile Photo</h6>
+			                       <div class="position-relative" align="center">
+		                    		   <img class="rounded-circle" src="resources/profilePhoto/${sessionScope.loginMember.member_photo }" style="width: 300px; height: 300px;">
+		                 		   </div>
+			                    </div>
+			                </div>
+			                <!-- Edit Button -->
+							<div style="width: 100%" align="center">
+								<button type="submit" class="btn btn-primary" style="width: 40%">Edit</button>
+						    </div>
+		        		</div>
+                    </form>
 	        	</div>
 
 	
 	            <!-- Footer Start -->
-	            <div class="container-fluid pt-4 px-4">
+	            <div class="container-fluid pt-4 px-4" style="margin-top: 200px;">
 	                <div class="bg-light rounded-top p-4">
 	                    <div class="row">
 	                        <div class="col-12 col-sm-6 text-center text-sm-start">

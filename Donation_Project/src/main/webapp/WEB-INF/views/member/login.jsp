@@ -51,7 +51,7 @@
 	            <!-- Registration Form -->
 	            <div class="form signup">
 	                <span class="title">Registration</span>
-	                <form action="signup.do" name="signupForm" method="POST" onsubmit="return checkSignup();">
+	                <form action="signup.do" name="signupForm" method="POST" onsubmit="return checkSignup();" enctype="Multipart/form-data">
 	                    <div class="input-field">
 	                        <input name="member_id" type="text" placeholder="Enter your ID" required>
 	                        <i class="uil uil-user"></i>
@@ -69,7 +69,10 @@
 	                        <i class="uil uil-lock icon"></i>
 	                        <i class="uil uil-eye-slash showHidePw"></i>
 	                    </div>
-	
+						<div class="mb-3" style="margin-top: 30px;">
+	                 			   <h6 class="mb-4">Photo Edit</h6>
+		                           <input name="member_photo" class="form-control" type="file" id="formFile">
+		                </div>
 	                    <div class="checkbox-text">
 	                        <div class="checkbox-content">
 	                            <input type="checkbox" id="termCon">

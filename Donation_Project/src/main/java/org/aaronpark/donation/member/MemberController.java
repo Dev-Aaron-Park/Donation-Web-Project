@@ -29,11 +29,20 @@ public class MemberController {
 		return "index";
 	}
 	
+	@RequestMapping(value = "/mypage.edit.do", method = RequestMethod.POST)
+	public String editDo(Member m, HttpServletRequest req) {
+		req.setAttribute("contentsPage", "member/mypage.jsp");
+		mDAO.edit(m, req);
+		mDAO.isLogined(req);
+		return "index";
+	}
+	
 	@RequestMapping(value = "/member.go", method = RequestMethod.GET)
 	public String memberGo(HttpServletRequest req) {
 		req.setAttribute("contentsPage", "member/login.jsp");
 		return "index";
 	}
+	
 	
 	@RequestMapping(value = "/mypage.go", method = RequestMethod.GET)
 	public String mypageGo(HttpServletRequest req) {
