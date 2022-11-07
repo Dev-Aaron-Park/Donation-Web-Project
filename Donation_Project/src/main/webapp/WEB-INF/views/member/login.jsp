@@ -18,7 +18,7 @@
 	        <div class="forms">
 	        
 				<!-- Login Form -->
-	            <div class="form login">
+	            <div class="form login" style="z-index: 1;">
 	                <span class="title">Login</span>
 	
 	                <form action="login.do" name="loginForm" method="POST" onsubmit="">
@@ -38,9 +38,8 @@
 	
 	                    <div class="input-field button">
 	                        <input type="submit" value="Login">
-	                    </div>
+	                    </div>	
 	                </form>
-	
 	                <div class="login-signup">
 	                    <span class="text">Not a member?
 	                        <a href="#" class="text signup-link">Signup Now</a>
@@ -49,7 +48,7 @@
 	            </div>
 	
 	            <!-- Registration Form -->
-	            <div class="form signup">
+	            <div class="form signup" style="z-index: 1;">
 	                <span class="title">Registration</span>
 	                <form action="signup.do" name="signupForm" method="POST" onsubmit="return checkSignup();" enctype="Multipart/form-data">
 	                    <div class="input-field">
@@ -70,13 +69,13 @@
 	                        <i class="uil uil-eye-slash showHidePw"></i>
 	                    </div>
 						<div class="mb-3" style="margin-top: 30px;">
-	                 			   <h6 class="mb-4">Photo Edit</h6>
+	                 			   <h6 class="mb-4">Profile Photo</h6>
 		                           <input name="member_photo" class="form-control" type="file" id="formFile">
 		                </div>
 	                    <div class="checkbox-text">
 	                        <div class="checkbox-content">
 	                            <input type="checkbox" id="termCon">
-	                            <label for="termCon" class="text">I accepted all terms and conditions</label>
+	                            <label for="termCon" class="text">I agree to membership registration</label>
 	                        </div>
 	                    </div>
 	

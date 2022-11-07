@@ -41,3 +41,12 @@ function checkSignup() {
 	
 	return true;
 }
+
+function checkAccoutEdit() {
+	var id = document.accountEditForm.member_id;
+	var pw = document.accountEditForm.member_pw;
+	var email = document.accountEditForm.member_email;
+	var photo = document.accountEditForm.member_photo;
+	
+	
+}

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.aaronpark.donation.board.BoardMapper">
+
+	<insert id="create"
+		parameterType="org.aaronpark.donation.board.Board">
+		insert into donation_board
+		values(donation_board_seq.nextval, #{board_creator},
+		#{board_business_name}, #{board_business_license_no},
+		#{board_donation_amount}, #{board_address}, #{board_content},
+		#{board_photo_1}, #{board_photo_2}, #{board_photo_3},
+		#{board_loi}, #{board_approval})
+	</insert>
+	
+	<update id="decReqPost" parameterType="org.aaronpark.donation.ManagementsAttr">
+		update donation_board set board_approval=#{board_dec} where board_no=#{board_no}
+	</update>
+	
+	<delete id="delPost" parameterType="org.aaronpark.donation.ManagementsAttr">
+		delete from donation_board where board_no=#{board_no}
+	</delete>
+	
+	<select id="selectPostOne" 
+		parameterType="org.aaronpark.donation.ManagementsAttr" 
+		resultType="org.aaronpark.donation.board.Board">
+		select * from donation_board where board_no=#{board_no}
+	</select>
+	
+	<select id="showReqPost" resultType="org.aaronpark.donation.board.Board">
+		select * from donation_board where board_approval=0
+	</select>
+	
+	<select id="showInitPost" resultType="org.aaronpark.donation.board.Board">
+		select * from donation_board where board_approval=1
+	</select>
+</mapper>

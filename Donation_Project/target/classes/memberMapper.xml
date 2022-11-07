@@ -3,11 +3,22 @@
 <mapper
 	namespace="org.aaronpark.donation.member.MemberMapper">
 	
-	<insert id="signup" 
+	<update id="edit"
 		parameterType="org.aaronpark.donation.member.Member">
-		insert into donation_member
-		values(#{member_id}, #{member_pw}, #{member_email}, #{member_photo})
-	</insert>
+		update donation_member
+		set member_id=#{member_id}, member_pw=#{member_pw}, 
+		member_email=#{member_email}, member_photo=#{member_photo},
+		member_permissions=#{member_permissions}
+		where member_id=#{member_id}
+	</update>
+	
+	<select id="getAdminMember" resultType="org.aaronpark.donation.member.Member">
+		select * from donation_member where member_permissions >= 8
+	</select>
+	
+	<select id="getNormalMember" resultType="org.aaronpark.donation.member.Member">
+		select * from donation_member where member_permissions = 0
+	</select>
 	
 	<select id="getMemberByID"
 		parameterType="org.aaronpark.donation.member.Member"
@@ -16,12 +27,21 @@
 		where member_id = #{member_id}
 	</select>
 	
-	<update id="edit"
+	<update id="memberAddAdmin"
 		parameterType="org.aaronpark.donation.member.Member">
-		update donation_member
-		set member_id=#{member_id}, member_pw=#{member_pw}, 
-		member_email=#{member_email}, member_photo=#{member_photo}
-		where member_id=#{member_id}
+		update dontaion_member
+		set member_permissions=8 where member_id=#{member_id}
 	</update>
 	
+	<update id="memberPermChange"
+		parameterType="org.aaronpark.donation.member.Member">
+		update donation_member
+		set member_permissions=#{member_permissions} where member_id=#{member_id}
+	</update>
+	
+	<insert id="signup" 
+		parameterType="org.aaronpark.donation.member.Member">
+		insert into donation_member
+		values(#{member_id}, #{member_pw}, #{member_email}, #{member_photo}, #{member_permissions})
+	</insert>
 </mapper>

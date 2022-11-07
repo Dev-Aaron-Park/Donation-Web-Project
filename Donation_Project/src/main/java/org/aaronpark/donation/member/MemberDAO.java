@@ -2,6 +2,7 @@ package org.aaronpark.donation.member;
 
 import java.io.File;
 import java.io.UnsupportedEncodingException;
+import java.math.BigDecimal;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
 
@@ -29,8 +30,7 @@ public class MemberDAO {
 			
 		} catch (Exception e) {
 			e.printStackTrace();
-			req.setAttribute("result", "Edit Failed(Photo)");
-			System.out.println("Edit Failed(Photo)");
+			req.setAttribute("result", "Member Edit Failed(Photo)");
 			return;
 		}
 		
@@ -41,9 +41,6 @@ public class MemberDAO {
 			String id = mr.getParameter("member_id");
 			String pw = mr.getParameter("member_pw");
 			String email = mr.getParameter("member_email");
-			System.out.println(id);
-			System.out.println(pw);
-			System.out.println(email);
 			
 			newPhoto = mr.getFilesystemName("member_photo");
 			if (newPhoto == null) {
@@ -52,16 +49,16 @@ public class MemberDAO {
 				newPhoto = URLEncoder.encode(newPhoto, "utf-8").replace("+", " ");
 			}
 			
-			System.out.println(newPhoto);
-			
 			m.setMember_id(id);
 			m.setMember_pw(pw);
 			m.setMember_email(email);
 			m.setMember_photo(newPhoto);
 			
+			// 총 관리자 : 9, 관리자 : 8, 일반 : 0
+			m.setMember_permissions(loginedMember.getMember_permissions());
+			
 			if (ss.getMapper(MemberMapper.class).edit(m) == 1) {
 				req.setAttribute("result", "Member Edit Success");
-				System.out.println("Member Edit Success");
 				req.getSession().setAttribute("loginMember", m);
 				if (!newPhoto.equals(oldPhoto)) {
 					oldPhoto = URLDecoder.decode(oldPhoto, "utf-8");
@@ -69,7 +66,6 @@ public class MemberDAO {
 				}
 			} else {
 				req.setAttribute("result", "Member Edit Failed");
-				System.out.println("Member Edit Failed");
 				if (!newPhoto.equals(oldPhoto)) {
 					newPhoto = URLDecoder.decode(newPhoto, "utf-8");
 					new File(path + "/" + newPhoto).delete();
@@ -79,7 +75,6 @@ public class MemberDAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 			req.setAttribute("result", "Member Edit Failed");
-			System.out.println("Member Edit Failed");
 			if (!newPhoto.equals(oldPhoto)) {
 				try {
 					newPhoto = URLDecoder.decode(newPhoto, "utf-8");
@@ -151,6 +146,7 @@ public class MemberDAO {
 			m.setMember_pw(pw);
 			m.setMember_email(email);
 			m.setMember_photo(photo);
+			m.setMember_permissions(new BigDecimal(0));
 			
 			if (ss.getMapper(MemberMapper.class).signup(m) == 1) {
 				req.setAttribute("result", "Member Create Success");
@@ -166,5 +162,53 @@ public class MemberDAO {
 		}
 	}
 	
+	public void getAdminMember(HttpServletRequest req) {
+		req.setAttribute("adminMembers", ss.getMapper(MemberMapper.class).getAdminMember());
+	}
 	
+	public void getGeneralMember(HttpServletRequest req) {
+		req.setAttribute("getNormalMember", ss.getMapper(MemberMapper.class).getNormalMember());
+	}
+	
+	public void memberPermChange(HttpServletRequest req) {
+		String id = req.getParameter("id");
+		if (id == null) {
+			return;
+		}
+		
+		try {
+			BigDecimal per = new BigDecimal(Integer.parseInt(req.getParameter("per")));
+			Member m = new Member();
+			m.setMember_id(id);
+			m.setMember_permissions(per);
+			if (ss.getMapper(MemberMapper.class).memberPermChange(m) == 1) {
+				req.setAttribute("result", "Member Permissions Change Success");
+			} else {
+				req.setAttribute("result", "Member Permissions Change Failed");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			req.setAttribute("result", "Member Permissions Change Failed");
+		}
+	}
+	
+	public void memberAddAdmin(HttpServletRequest req) {
+		
+	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

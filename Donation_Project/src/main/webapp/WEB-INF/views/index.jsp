@@ -32,6 +32,8 @@
 <link rel="stylesheet" href="resources/css/daterangepicker.css">
 <link rel="stylesheet" href="resources/css/aos.css">
 <link rel="stylesheet" href="resources/css/style.css">
+<link rel="stylesheet" href="resources/css/board/main.css">
+<link rel="stylesheet" href="resources/css/board/postDetail.css">
 
 <script src="resources/js/jquery-3.4.1.min.js"></script>
 <script src="resources/js/popper.min.js"></script>
@@ -49,8 +51,10 @@
 <script src="resources/js/custom/alert.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
+<!-- Custom JS -->
 <script src="resources/js/custom/aaronValidChecker.js"></script>
 <script src="resources/js/custom/validCheck.js"></script>
+<script src="resources/js/custom/link.js"></script>
 
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>

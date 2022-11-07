@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,126 +19,23 @@
 	<div class="untree_co-section">
 		<div class="container">
 			<div class="row">
-				<div class="col-6 col-md-6 col-lg-3">
-					<div class="media-1">
-						<a href="#" class="d-block mb-3"><img
-							src="resources/images/donation-slider-1.png" alt="Image" class="img-fluid"></a>
-						<div class="d-flex">
-							<div>
-								<h3>
-									<a href="#">Excellence in Travel</a>
-								</h3>
-								<p>Far far away, behind the word mountains, far from the
-									countries Vokalia and Consonantia, there live the blind texts.</p>
+				<c:forEach var="post" items="${initPostList }">
+					<div class="col-6 col-md-6 col-lg-3" style="min-width: 570px;">
+						<div class="media-1" style="align-items: center;">
+							<a onclick="postDetailGo(${post.board_no });" class="d-block mb-3" style="cursor: pointer;">
+								<img src="resources/boardPhoto/${post.board_photo_1 }" alt="Image" class="img-fluid photoCard">
+							</a>
+							<div class="d-flex">
+								<div>
+									<h3>
+										<a onclick="postDetailGo(${post.board_no });" style="cursor: pointer;">${post.board_business_name }</a>
+									</h3>
+									<p><fmt:formatNumber value="${post.board_donation_amount }" pattern="#,###"/>&nbsp;₩</p>
+								</div>
 							</div>
 						</div>
 					</div>
-				</div>
-				<div class="col-6 col-md-6 col-lg-3">
-					<div class="media-1">
-						<a href="#" class="d-block mb-3"><img
-							src="resources/images/donation-slider-1.png" alt="Image" class="img-fluid"></a>
-						<div class="d-flex">
-							<div>
-								<h3>
-									<a href="#">Discovering Best</a>
-								</h3>
-								<p>Far far away, behind the word mountains, far from the
-									countries Vokalia and Consonantia, there live the blind texts.</p>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-6 col-md-6 col-lg-3">
-					<div class="media-1">
-						<a href="#" class="d-block mb-3"><img
-							src="resources/images/donation-slider-1.png" alt="Image" class="img-fluid"></a>
-						<div class="d-flex">
-							<div>
-								<h3>
-									<a href="#">A New Moments of Life</a>
-								</h3>
-								<p>Far far away, behind the word mountains, far from the
-									countries Vokalia and Consonantia, there live the blind texts.</p>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-6 col-md-6 col-lg-3">
-					<div class="media-1">
-						<a href="#" class="d-block mb-3"><img
-							src="resources/images/donation-slider-1.png" alt="Image" class="img-fluid"></a>
-						<div class="d-flex">
-							<div>
-								<h3>
-									<a href="#">Joy To Your Journey</a>
-								</h3>
-								<p>Far far away, behind the word mountains, far from the
-									countries Vokalia and Consonantia, there live the blind texts.</p>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-6 col-md-6 col-lg-3">
-					<div class="media-1">
-						<a href="#" class="d-block mb-3"><img
-							src="resources/images/donation-slider-1.png" alt="Image" class="img-fluid"></a>
-						<div class="d-flex">
-							<div>
-								<h3>
-									<a href="#">Excellence in Travel</a>
-								</h3>
-								<p>Far far away, behind the word mountains, far from the
-									countries Vokalia and Consonantia, there live the blind texts.</p>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-6 col-md-6 col-lg-3">
-					<div class="media-1">
-						<a href="#" class="d-block mb-3"><img
-							src="resources/images/donation-slider-1.png" alt="Image" class="img-fluid"></a>
-						<div class="d-flex">
-							<div>
-								<h3>
-									<a href="#">Discovering Best</a>
-								</h3>
-								<p>Far far away, behind the word mountains, far from the
-									countries Vokalia and Consonantia, there live the blind texts.</p>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-6 col-md-6 col-lg-3">
-					<div class="media-1">
-						<a href="#" class="d-block mb-3"><img
-							src="resources/images/donation-slider-1.png" alt="Image" class="img-fluid"></a>
-						<div class="d-flex">
-							<div>
-								<h3>
-									<a href="#">A New Moments of Life</a>
-								</h3>
-								<p>Far far away, behind the word mountains, far from the
-									countries Vokalia and Consonantia, there live the blind texts.</p>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-6 col-md-6 col-lg-3">
-					<div class="media-1">
-						<a href="#" class="d-block mb-3"><img
-							src="resources/images/donation-slider-1.png" alt="Image" class="img-fluid"></a>
-						<div class="d-flex">
-							<div>
-								<h3>
-									<a href="#">Joy To Your Journey</a>
-								</h3>
-								<p>Far far away, behind the word mountains, far from the
-									countries Vokalia and Consonantia, there live the blind texts.</p>
-							</div>
-						</div>
-					</div>
-				</div>
+				</c:forEach>
 			</div>
 		</div>
 	</div>
