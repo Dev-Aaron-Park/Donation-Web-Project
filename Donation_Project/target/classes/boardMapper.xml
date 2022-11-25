@@ -26,11 +26,35 @@
 		select * from donation_board where board_no=#{board_no}
 	</select>
 	
+	<select id="showAllCount"
+		parameterType="org.aaronpark.donation.PageManager"
+		resultType="java.lang.Integer">
+		select count(*) from donation_board where board_approval = 1 
+	</select>
+	
 	<select id="showReqPost" resultType="org.aaronpark.donation.board.Board">
 		select * from donation_board where board_approval=0
 	</select>
 	
-	<select id="showInitPost" resultType="org.aaronpark.donation.board.Board">
-		select * from donation_board where board_approval=1
+	<select id="showInitPost"
+		parameterType="org.aaronpark.donation.PageManager" 
+		resultType="org.aaronpark.donation.board.Board">
+		select *
+		from (
+			select rownum as rn, board_no, board_creator, board_business_name, board_business_license_no, board_donation_amount, board_address, board_content, board_photo_1, board_photo_2, board_photo_3, board_loi, board_approval
+			from (
+				select board_no, board_creator, board_business_name, board_business_license_no, board_donation_amount, board_address, board_content, board_photo_1, board_photo_2, board_photo_3, board_loi, board_approval
+				from donation_board 
+				where board_approval = 1
+				and (board_creator like '%'||#{keyword}||'%' or board_business_name like '%'||#{keyword}||'%' or board_content like '%'||#{keyword}||'%')
+				order by board_no desc
+			)
+		) where rn &gt;=#{start} and rn &lt;=#{end}
 	</select>
+	
+	<update id="editPost" parameterType="org.aaronpark.donation.board.Board">
+		update donation_board
+		set board_content=#{board_content}, board_photo_1=#{board_photo_1}, board_photo_2=#{board_photo_2}, board_photo_3=#{board_photo_3}
+		where board_no=#{board_no}
+	</update>
 </mapper>

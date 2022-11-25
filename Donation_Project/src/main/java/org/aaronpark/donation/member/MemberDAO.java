@@ -104,8 +104,10 @@ public class MemberDAO {
 				if (inputMember.getMember_pw().equals(dbMember.getMember_pw())) {
 					req.getSession().setAttribute("loginMember", dbMember);
 					req.setAttribute("result", "Login Success");
+					req.setAttribute("contentsPage", "home.jsp");
 				} else {
 					req.setAttribute("result", "Login Failed(Password Error)");
+					req.setAttribute("contentsPage", "member/login.jsp");
 				}
 				
 			} else {

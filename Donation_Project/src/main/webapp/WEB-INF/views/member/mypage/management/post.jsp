@@ -60,7 +60,7 @@
 						</a>
 						<div class="dropdown-menu bg-transparent border-0">
 							<a href="mypage.mng.member" class="dropdown-item">Member</a> <a
-								href="mypage.mng.post" class="dropdown-item">Post</a>
+								href="mypage.mng.post?page=1" class="dropdown-item">Post</a>
 						</div>
 					</div>
 				</c:if>
@@ -145,12 +145,22 @@
 									<td>${post.board_business_name }</td>
 									<td>Initiated</td>
 									<td>
-										<a onclick="initPostDelete(${post.board_no});">Delete</a>
+										<a onclick="initPostDelete(${post.board_no}, 'management');">Delete</a>
 									</td>
 								</tr>
 							</c:forEach>
 						</tbody>
 					</table>
+					<div align="center">
+						<c:forEach var="p" begin="1" end="${pageCount }">
+							<a href="mypage.mng.post?page=${p }">&nbsp;${p }&nbsp;</a>
+						</c:forEach>
+					</div>
+					<div align="right" style="margin-bottom: 10px;">
+						<form action="mypage.mng.post.search">
+							<input name="keyword"> <button>Search</button>
+						</form>
+					</div>
 				</div>
 			</div>
 		</div>

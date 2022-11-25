@@ -9,16 +9,16 @@ function reqPostDecision(no) {
 		/* Read more about isConfirmed, isDenied below */
 		if (result.isConfirmed) {
 			Swal.fire('Approved !', 'Post No.'+no, '')
-			location.href="mypage.mng.post?no="+no+"&dec=1";
+			location.href="mypage.mng.post?no="+no+"&dec=1&page=1";
 		} else if (result.isDenied) {
 			Swal.fire('Rejected !', 'Post No.'+no, '')
-			location.href="mypage.mng.post?no="+no+"&dec=0";
+			location.href="mypage.mng.post?no="+no+"&dec=0&page=1";
 		}
 	})
 	
 }
 
-function initPostDelete(no) {
+function initPostDelete(no, loc) {
 	Swal.fire({
 		title: 'Are you sure?',
 		text: "You won't be able to revert this!",
@@ -30,9 +30,17 @@ function initPostDelete(no) {
 	}).then((result) => {
 		if (result.isConfirmed) {
 			Swal.fire('Deleted!', 'Your file has been deleted.', 'success')
-			location.href="mypage.mng.post.del?no="+no;
+			if (loc == 'management') {
+				location.href = "mypage.mng.post.del?page=1&no=" + no;
+			} else if (loc == 'postDetail'){
+				location.href = "board.post.del?page=1&no=" + no;
+			}
 		}
 	})
+}
+
+function initPostEdit(no) {
+	location.href = "board.post.edit.go?no=" + no; 
 }
 
 function postDetailGo(no) {

@@ -15,6 +15,60 @@
 	resize: none;
 }
 
-.postDetailPhotoSlider {
-	max-height: 300px;
+.postDetailSideCard {
+	width: 335px;
+	height: 460px;
+	border-radius: 5px;
+	margin-right: 40px;
+	position: fixed;
+	top: 150px;
+	right: 30px;
+	background-color: #F8F9FA;
+}
+
+.editBtn {
+	border-radius: 5px; 
+	background-color: #6998AB; 
+	color: white; 
+	border: white; 
+	width: 10%; 
+	height: 40px;
+}
+
+.sideItems {
+	height: 60px;
+	margin-top: 15px;
+	border-bottom: solid 1px;
+	display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.paymentCard {
+	background-color: white;
+	border: solid 1px;
+	z-index: 9;
+	width: 500px;
+	height: 500px;
+	border-radius: 5px;
+	position: fixed;
+	opacity: 0;
+	top: 200px;
+	right: 700px;
+	background-color: #F8F9FA;
+}
+
+.paymentCard div{
+	margin-top: 40px;
+}
+
+.paymentCard .amountBtn input{
+	border: solid 1px;
+	margin-left: 8px;
+	margin-right: 8px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 120px;
+	height: 40px;
 }

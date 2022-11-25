@@ -42,7 +42,7 @@
 							<li><a href="#">Created By</a></li>
 						</ul>
 					</li>
-					<li><a href="board.go">Donation</a></li>
+					<li><a href="board.go?page=1">Donation</a></li>
 					<c:choose>
 						<c:when test="${isLogined == true }">
 							<li><a href="mypage.go">My Page</a></li>

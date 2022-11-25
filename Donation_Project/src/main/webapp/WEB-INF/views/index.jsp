@@ -48,11 +48,12 @@
 <script src="resources/js/typed.js"></script>
 <script src="resources/js/custom.js"></script>
 
-<script src="resources/js/custom/alert.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
 <!-- Custom JS -->
 <script src="resources/js/custom/aaronValidChecker.js"></script>
+<script src="resources/js/custom/alert.js"></script>
+<script src="resources/js/custom/kakaoPay.js"></script>
 <script src="resources/js/custom/validCheck.js"></script>
 <script src="resources/js/custom/link.js"></script>
 

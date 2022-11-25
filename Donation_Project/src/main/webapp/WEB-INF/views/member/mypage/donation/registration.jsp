@@ -59,7 +59,7 @@
 							</a>
 							<div class="dropdown-menu bg-transparent border-0">
 								<a href="mypage.mng.member" class="dropdown-item">Member</a>
-								<a href="mypage.mng.post" class="dropdown-item">Post</a> 
+								<a href="mypage.mng.post?page=1" class="dropdown-item">Post</a> 
 							</div>
 						</div>
 				</c:if>
@@ -106,7 +106,7 @@
 				</div>
 				<div class="form-floating">
 					<textarea name="board_content" class="form-control" placeholder="Leave a comment here"
-						id="floatingTextarea" style="height: 150px;" maxlength="1400"></textarea>
+						id="floatingTextarea" style="height: 150px;" maxlength="1000"></textarea>
 					<label for="floatingTextarea">Comments</label>
 				</div>
 			</div>
@@ -114,12 +114,12 @@
 		<div class="container-fluid pt-4 px-4">
 			<div class="bg-light rounded h-100 p-4">
 				<h6>Photo</h6>
-				<label for="formFile" class="form-label"></label> <input name="board_photo_1" class="form-control" type="file" id="formFile">
-				<label for="formFile" class="form-label"></label> <input name="board_photo_2" class="form-control" type="file" id="formFile">
-				<label for="formFile" class="form-label"></label> <input name="board_photo_3" class="form-control" type="file" id="formFile">
+				<label for="formFile" class="form-label"></label> <input name="board_photo_1" class="form-control" type="file" id="formFile" required>
+				<label for="formFile" class="form-label"></label> <input name="board_photo_2" class="form-control" type="file" id="formFile" required>
+				<label for="formFile" class="form-label"></label> <input name="board_photo_3" class="form-control" type="file" id="formFile" required>
 				<br>
 				<h6 style="margin-top: 20px;">List of items that need donation</h6>
-				<label for="formFile" class="form-label"></label> <input name="board_loi" class="form-control" type="file" id="formFile">
+				<label for="formFile" class="form-label"></label> <input name="board_loi" class="form-control" type="file" id="formFile" required>
 			</div>
 		</div>
 		<br>

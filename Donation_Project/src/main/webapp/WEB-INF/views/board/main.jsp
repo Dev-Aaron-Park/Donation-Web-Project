@@ -39,6 +39,16 @@
 			</div>
 		</div>
 	</div>
+	<div align="center">
+		<c:forEach var="p" begin="1" end="${pageCount }">
+			<a href="board.go?page=${p }" style="color: #6998AB;">&nbsp;${p }&nbsp;</a>
+		</c:forEach>
+	</div>
+	<div align="center" style="margin-top: 10px;">
+		<form action="board.search">
+			<input name="keyword"> <button>Search</button>
+		</form>
+	</div>
 	
 	<script src="resources/js/custom.js"></script>
 </body>

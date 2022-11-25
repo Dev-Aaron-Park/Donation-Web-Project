@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.aaronpark.donation.details.DetailsMapper">
+	<insert id="create" parameterType="org.aaronpark.donation.comment.Comment">
+		insert into donation_comment
+		values(donation_comment_seq.nextval, #{comment_board_no}, #{comment_member}, sysdate, #{comment_text})
+	</insert>
+</mapper>

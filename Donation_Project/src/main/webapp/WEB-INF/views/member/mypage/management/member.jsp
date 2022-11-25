@@ -59,7 +59,7 @@
 						</a>
 						<div class="dropdown-menu bg-transparent border-0">
 							<a href="mypage.mng.member" class="dropdown-item">Member</a> <a
-								href="mypage.mng.post" class="dropdown-item">Post</a>
+								href="mypage.mng.post?page=1" class="dropdown-item">Post</a>
 						</div>
 					</div>
 				</c:if>
